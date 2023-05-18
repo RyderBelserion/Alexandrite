@@ -1,4 +1,6 @@
 plugins {
+    application
+
     id("com.github.johnrengelman.shadow") version "8.1.1"
 
     kotlin("jvm") version "1.8.21"
@@ -14,9 +16,14 @@ repositories {
 dependencies {
     api(kotlin("stdlib"))
 
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.jda)
+    implementation(libs.gson)
+    implementation(libs.dotenv)
+    implementation(libs.logback)
 
-    implementation("ch.jalu:configme:1.3.0")
+    implementation(libs.configme)
+
+    implementation(libs.coroutines)
 }
 
 kotlin {
@@ -30,6 +37,16 @@ kotlin {
 }
 
 tasks {
+    shadowJar {
+        archiveBaseName.set("${rootProject.name}+${rootProject.version}")
+
+        fun reloc(pkg: String) = relocate(pkg, "${rootProject.group}.dependency.$pkg")
+    }
+
+    application {
+        mainClass.set("com.ryderbelserion.alexandrite.StarterKt")
+    }
+
     compileKotlin {
         kotlinOptions {
             jvmTarget = "17"

@@ -46,15 +46,15 @@ object FileUtils {
 
             if (entry.isDirectory) {
                 if (exists) return
-                try {
+
+                runCatching {
                     Files.createDirectories(outFile)
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
+
                 continue
             }
 
-            try {
+            runCatching {
                 jar.getInputStream(entry).use { inputStream ->
                     BufferedOutputStream(FileOutputStream(outFile.toFile())).use { outputStream ->
                         val buffer = ByteArray(4096)
@@ -67,8 +67,6 @@ object FileUtils {
                         outputStream.flush()
                     }
                 }
-            } catch (exception: Exception) {
-                exception.printStackTrace()
             }
         }
     }

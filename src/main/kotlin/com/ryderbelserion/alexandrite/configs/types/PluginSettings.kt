@@ -3,6 +3,7 @@ package com.ryderbelserion.alexandrite.configs.types
 import ch.jalu.configme.Comment
 import ch.jalu.configme.SettingsHolder
 import ch.jalu.configme.configurationdata.CommentsConfiguration
+import ch.jalu.configme.properties.Property
 import ch.jalu.configme.properties.PropertyInitializer
 
 /**
@@ -25,7 +26,7 @@ class PluginSettings : SettingsHolder {
     companion object {
 
         @Comment("Whether you want to have verbose logging enabled or not.")
-        val VERBOSE_LOGGING = PropertyInitializer.newProperty("settings.verbose-logging", true)
+        val VERBOSE_LOGGING: Property<Boolean> = PropertyInitializer.newProperty("settings.verbose-logging", true)
 
     }
 }

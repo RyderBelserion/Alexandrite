@@ -10,9 +10,11 @@ import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.cache.CacheFlag
+import java.io.File
 
 abstract class Application(
     private val token: String,
+    file: File = File("./"),
     private val gateways: List<GatewayIntent> = emptyList(),
     private val cacheFlags: List<CacheFlag> = emptyList(),
     private val extra: Application.() -> Unit = {}
@@ -21,6 +23,8 @@ abstract class Application(
     val jda: JDA = get()
 
     init {
+        if (!file.exists()) file.mkdir()
+
         startApplication()
 
         Scheduler.start()

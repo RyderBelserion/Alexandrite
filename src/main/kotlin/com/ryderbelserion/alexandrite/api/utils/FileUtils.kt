@@ -7,18 +7,8 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.util.zip.ZipFile
 
-/**
- * Description: Extracts files from inside the .jar file.
- */
 object FileUtils {
 
-    /**
-     * Extracts files from inside the .jar into an output
-     *
-     * @param input the directory in the .jar
-     * @param output the output wherever you use this.
-     * @param replace if we should replace or not.
-     */
     fun extract(input: String, output: Path, replace: Boolean) {
         val directory = FileUtils::class.java.getResource(input) ?: return
 

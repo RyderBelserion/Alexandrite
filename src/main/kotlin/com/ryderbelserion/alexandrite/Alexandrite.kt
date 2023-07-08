@@ -9,7 +9,10 @@ class Alexandrite(token: String) : Application(
     token,
     File("./bot"),
     listOf(
-        GatewayIntent.GUILD_PRESENCES
+        GatewayIntent.GUILD_PRESENCES,
+        GatewayIntent.SCHEDULED_EVENTS,
+        GatewayIntent.GUILD_VOICE_STATES,
+        GatewayIntent.GUILD_EMOJIS_AND_STICKERS
     )
 ) {
 

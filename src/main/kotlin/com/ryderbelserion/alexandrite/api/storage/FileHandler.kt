@@ -42,8 +42,8 @@ class FileHandler : FileManager {
     }
 
     private fun extract(value: String, directory: Path) {
-        val newDirectory = File(directory.toString() + value)
-        newDirectory.mkdir()
+        File(directory.toString() + value).mkdir()
+
         FileUtils.extract(value, directory, false)
     }
 }

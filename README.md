@@ -1,2 +1,2 @@
 # Alexandrite
-A personal discord bot for my discord
+A self-hosted bot ready for any Discord!

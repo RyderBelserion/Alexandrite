@@ -1,5 +1,5 @@
 package com.ryderbelserion.alexandrite
 
 fun main() {
-    Alexandrite(System.getenv("DISCORD_TOKEN"))
+    Alexandrite(System.getenv("discord_token"))
 }

@@ -20,7 +20,7 @@ abstract class Application(
     private val extra: Application.() -> Unit = {}
 ): ModuleApplication {
 
-    val jda: JDA = get()
+    private val jda: JDA = get()
 
     init {
         if (!file.exists()) file.mkdir()

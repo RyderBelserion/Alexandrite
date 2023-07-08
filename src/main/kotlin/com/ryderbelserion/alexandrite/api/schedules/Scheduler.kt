@@ -1,8 +1,8 @@
 package com.ryderbelserion.alexandrite.api.schedules
 
-import kotlinx.coroutines.*
 import com.ryderbelserion.alexandrite.api.schedules.types.DateSchedule
 import com.ryderbelserion.alexandrite.api.schedules.types.DaySchedule
+import kotlinx.coroutines.*
 import java.time.Clock
 import java.time.DayOfWeek
 import java.time.LocalDateTime

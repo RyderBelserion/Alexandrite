@@ -1,6 +1,5 @@
 package com.ryderbelserion.alexandrite.api.schedules
 
-import com.ryderbelserion.alexandrite.api.schedules.Schedule
 import java.time.LocalDateTime
 
 /**

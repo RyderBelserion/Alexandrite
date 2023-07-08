@@ -15,15 +15,23 @@ class JsonLoader(private val fileExtension: FileExtension) : FileLoader {
     private val gson: Gson
 
     init {
-        val gsonBuilder = GsonBuilder().disableHtmlEscaping().excludeFieldsWithModifiers(Modifier.TRANSIENT).excludeFieldsWithoutExposeAnnotation()
+        if (this.fileExtension.builder != null) {
+            this.gson = this.fileExtension.builder.create();
+        } else {
+            val gsonBuilder = GsonBuilder()
+                .disableHtmlEscaping()
+                .excludeFieldsWithModifiers(Modifier.TRANSIENT)
+                .excludeFieldsWithoutExposeAnnotation()
 
-        gson = gsonBuilder.create()
+            this.gson = gsonBuilder.create();
+        }
     }
 
     override fun load() {
         runCatching {
             if (file.createNewFile()) {
                 save()
+
                 return
             }
         }.onSuccess {
@@ -39,6 +47,7 @@ class JsonLoader(private val fileExtension: FileExtension) : FileLoader {
     override fun save() {
         runCatching {
             if (!file.exists()) file.createNewFile()
+
             write()
         }
     }

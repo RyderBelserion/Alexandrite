@@ -3,10 +3,10 @@ plugins {
 
     id("com.github.johnrengelman.shadow") version "8.1.1"
 
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.9.0"
 }
 
-rootProject.version = "0.0.0.1"
+rootProject.version = "0.0.1"
 rootProject.description = "A discord bot for my personal server."
 
 repositories {
@@ -16,14 +16,15 @@ repositories {
 dependencies {
     api(kotlin("stdlib"))
 
-    implementation(libs.jda)
-    implementation(libs.gson)
-    implementation(libs.dotenv)
-    implementation(libs.logback)
+    implementation("net.dv8tion", "JDA", "5.0.0-beta.12")
 
-    implementation(libs.configme)
+    implementation("com.google.code.gson", "gson", "2.10.1")
 
-    implementation(libs.coroutines)
+    implementation("ch.qos.logback", "logback-classic", "1.4.5")
+
+    implementation("io.github.cdimascio", "dotenv-kotlin", "6.4.1")
+
+    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
 }
 
 kotlin {
@@ -40,7 +41,7 @@ tasks {
     shadowJar {
         archiveBaseName.set("${rootProject.name}+${rootProject.version}")
 
-        fun reloc(pkg: String) = relocate(pkg, "${rootProject.group}.dependency.$pkg")
+        fun reloc(pkg: String) = relocate(pkg, "${rootProject.group}.dep.$pkg")
     }
 
     application {

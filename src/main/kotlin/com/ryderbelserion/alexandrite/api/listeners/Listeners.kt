@@ -8,7 +8,7 @@ class Listeners(private val jda: JDA) {
     /**
      * Registers a listener.
      */
-    private fun register(listener: ListenerAdapter) {
+    fun register(listener: ListenerAdapter) {
         jda.addEventListener(listener)
     }
 

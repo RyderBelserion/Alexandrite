@@ -36,8 +36,7 @@ class FileWatcherListener : ListenerAdapter() {
             val proxy = attachment.proxy.downloadToFile(oldFile).thenAccept {
                 it.renameTo(newFile)
 
-                event.message.reply("I've converted that file for you!")
-                    .addFiles(FileUpload.fromData(newFile, newFile.name)).queue()
+                event.message.reply("I've converted that file for you!").addFiles(FileUpload.fromData(newFile, newFile.name)).queue()
             }.exceptionally { stack ->
                 stack.printStackTrace()
                 null
